@@ -1,0 +1,72 @@
+<div class="overflow-hidden bg-white py-24 sm:py-32">
+  <div class="mx-auto flex-col max-w-7xl px-6 lg:px-8">
+    <div
+      class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2"
+    >
+      <div class="lg:pr-8 lg:pt-4">
+        <div class="lg:max-w-lg">
+          <p
+            class="mt-2 text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl"
+          >
+            Convert HEIC format into jpg
+          </p>
+          <p class="mt-6 text-lg leading-8 text-gray-600">
+            Quick and easy conversion
+          </p>
+          <dl
+            class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none"
+          >
+            <div class="relative pl-9">
+              <dt class="inline font-semibold text-gray-900">
+                <svg
+                  class="absolute left-1 top-1 h-5 w-5 text-indigo-600"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4.5 4.5 0 018.302-3.046 3.5 3.5 0 014.504 4.272A4 4 0 0115 17H5.5zm3.75-2.75a.75.75 0 001.5 0V9.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0l-3.25 3.5a.75.75 0 101.1 1.02l1.95-2.1v4.59z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                Drag and drop.
+              </dt>
+              <dd class="inline">
+                Pick your images which you would like to convert and drop
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+      <div
+        class="flex-col align-middle"
+        (dragover)="onImageDragOver($event)"
+        (dragleave)="onDragLeave()"
+        (drop)="onDrop($event)"
+        *ngIf="!showSpinner"
+      >
+        <label
+          class="flex justify-center w-full h-96 px-4 transition bg-white border-2 border-indigo-300 border-dashed rounded-md appearance-none cursor-pointer focus:outline-none"
+          [ngClass]="{ 'border-indigo-600': isDragging }"
+        >
+          <span class="flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+            </svg>
+            <span class="font-medium text-gray-600">
+              Drop files to Attach, or
+              <button class="text-indigo-700 underline" (click)="fileUpload.click()">browse</button>
+            </span>
+          </span>
+          <input
+             type="file" class="hidden" multiple
+            (change)="onChange($event)" #fileUpload/>
+        </label>
+      </div>
+        <div class="flex items-center justify-center" *ngIf="showSpinner">
+          <mat-spinner></mat-spinner>
+      </div>
+    </div>
+  </div>
+</div>  
